@@ -1,0 +1,3 @@
+const links=[...document.querySelectorAll('nav a')];const sections=[...document.querySelectorAll('main section[id]')];const nav=document.querySelector('nav');const menu=document.querySelector('.menu-btn');
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}}),{threshold:.35});sections.forEach(s=>obs.observe(s));
+menu?.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',open);});links.forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu?.setAttribute('aria-expanded','false')}));
